@@ -24,24 +24,24 @@ const CustomButton = ({onPress, text, type="PRIMARY", bgColor, fgColor}) => {
     
 };
 const styles = StyleSheet.create({
-    container: {
-        
-
+    
+    container_PRIMARY: { //For buttons that are primary buttons such as sign in, sign up
+        backgroundColor: '#CCB3C4',
         width:'100%',
         padding: 15,
         marginVertical:5,
         alignItems: 'center',
         borderRadius: 5,
-    },
-    container_PRIMARY: {
-        backgroundColor: 'violet',
 
     },
-    container_SECONDARY: {
-     borderColor: 'blue',
-     borderWidth: 1.5,
-    },
+   
     container_TERTIARY: {
+       // For the buttons that don't look like buttons but are buttons :D
+        
+        width:'100%',
+        padding: 15,
+        marginVertical:5,
+        
         
     }, text_SECONDARY: {
         color: 'black'

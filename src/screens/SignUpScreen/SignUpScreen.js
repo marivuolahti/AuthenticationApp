@@ -1,90 +1,89 @@
 import React, {useState} from "react";
-import { View,Text, StyleSheet, ScrollView, DatePickerAndroid } from "react-native";
+import { View,Text, StyleSheet} from "react-native";
 import CustomInput from "../../components/CustomInput";
 import CustomButton from "../../components/CustomButton";
-import SocialSignInButtons from "../../components/SocialSignInButtons/SocialSignInButtons";
 import { useNavigation } from "@react-navigation/core";
+import BackButtons from "../../components/BackButtons/BackButtons";
+
 
 const SignUpScreen = () => {
-    const [username, setUsername] = useState('');
-    const [email, SetEmail] = useState('');
+    
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [passwordRepeat, setPasswordRepeat] = useState ('');
+ 
+
     const navigation = useNavigation();
     
 
     const OnRegisterPressed = () => {
-        navigation.navigate('ConfirmEmailScreen')
+        navigation.navigate('HomeScreen')
     }
     
     const OnSignInPressed = () => {
         navigation.navigate('SignInScreen')
     }
-    const OnTermsOfUsedPressed = () => {
-        console.warn('OnTermsOfUsedPressed');
+   
+    const ExitPressed = () => {
+        navigation.navigate('WelcomeScreen');
     }
 
     return (
-        <ScrollView>
+      
+
         <View style={styles.root}>
-          <Text style={styles.title}>Create an account</Text>
-           <CustomInput placeholder="Username"
-            value= {username} 
-            setValue={setUsername} />
+          
+          <Text style={styles.WelcomeText}>Create an account</Text>
 
          <CustomInput placeholder="Email"
             value= {email} 
-            setValue={SetEmail} />
+            setValue={setEmail} />
 
            <CustomInput placeholder="Password"
             value= {password} 
             setValue={setPassword} 
             secureTextEntry= {true} />
 
-           <CustomInput placeholder="Repeat password"
-            value= {passwordRepeat} 
-            setValue={setPasswordRepeat} 
-            secureTextEntry= {true} />
-
-            <CustomButton text= "Register" onPress={OnRegisterPressed} />
-            <Text style={styles.text}>
-                By registering you confirm that you can be {''}
-                <Text style={styles.link}onPress={OnTermsOfUsedPressed}>Fooled</Text>
-                </Text>
+            <CustomButton text= "Register" onPress={OnRegisterPressed} type= "PRIMARY" />
+           
                 
-            <SocialSignInButtons />
-
             <CustomButton text= "Have an account? Sign In!"
              onPress={OnSignInPressed}
              type= "TERTIARY" 
              />
+             
+            
+              <BackButtons text= "←"
+             onPress={ExitPressed}
+             type= "TERTIARY"
+             />
+
+
             
         </View>
-        </ScrollView>
+        
     );
 };
 const styles = StyleSheet.create ({
     root: {
         alignItems: 'center',
         padding: 20,
-        backgroundColor:'pink',
+        
     },
    
-    title: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: '#051C60',
-        margin: 10,
-
-    },
     text: {
-    color: 'gray',
+    color: 'grey',
     marginVertical: 10,
 
     },
 
     link: {
         color: 'red'
+    },
+
+    WelcomeText: {
+    fontSize: 30,
+    marginBottom: '5%',
+    color: '#df9fbf'
     }
 
 });
